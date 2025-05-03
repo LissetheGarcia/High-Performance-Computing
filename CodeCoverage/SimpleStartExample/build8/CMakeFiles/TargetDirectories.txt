@@ -1,4 +1,0 @@
-/home/lissethe/CMakeT1/build8/CMakeFiles/reversed_str.dir
-/home/lissethe/CMakeT1/build8/CMakeFiles/test.dir
-/home/lissethe/CMakeT1/build8/CMakeFiles/edit_cache.dir
-/home/lissethe/CMakeT1/build8/CMakeFiles/rebuild_cache.dir
