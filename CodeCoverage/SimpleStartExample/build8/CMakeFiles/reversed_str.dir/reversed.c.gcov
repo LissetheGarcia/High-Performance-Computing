@@ -1,0 +1,95 @@
+        -:    0:Source:/home/lissethe/CMakeT1/reversed.c
+        -:    0:Graph:reversed.c.gcno
+        -:    0:Data:reversed.c.gcda
+        -:    0:Runs:6
+        -:    1:// This programs print the maximum line lenght from user input
+        -:    2:
+        -:    3:#include <stdio.h>
+        -:    4:
+        -:    5:#define MAXLINE 1000
+        -:    6:
+        -:    7:int line_count(char lines[], int lim);
+        -:    8:void copy(char to[], char from[]);
+        -:    9:void reverseds(char to[], char from[], int max);
+        -:   10:
+        6:   11:int main()
+        -:   12:{
+        6:   13:    int len, max = 0;
+        -:   14:    char line[MAXLINE];
+        -:   15:    char copied[MAXLINE];
+        -:   16:    char reversed[MAXLINE];
+        -:   17:
+       14:   18:    while((len = line_count(line, MAXLINE)) > 0)
+        -:   19:    {
+        2:   20:        printf("The lenght is: %d\n", len);
+        -:   21:
+        2:   22:        if(len > max)
+        -:   23:        {
+        2:   24:            max = len;
+        2:   25:            copy(copied, line);
+        2:   26:            reverseds(reversed, copied, max);
+        -:   27:        }
+        -:   28:    }
+        6:   29:    if(max > 0)
+        -:   30:    {
+        2:   31:        printf("\nThe longest line has lenght: %d\n", max);
+        2:   32:        printf("\nWhose content is: %s\n", copied);
+        2:   33:        printf("\nWhose content reversed is: %s\n", reversed);
+        -:   34:    }
+        -:   35:
+        -:   36:
+        6:   37:    return 0;
+        -:   38:}
+        -:   39:
+        -:   40:
+        8:   41:int line_count(char s[], int lim)
+        -:   42:{
+        -:   43:    int i, c;
+        -:   44:
+       18:   45:    for(i = 0; i < lim && (c = getchar()) != EOF && c != '\n'; ++i)
+        -:   46:    {
+        -:   47:        // s[i] = c;
+       10:   48:        if(c == ' ' || c == '\b')
+        -:   49:        {
+    #####:   50:            c = getchar();
+        -:   51:        }
+       10:   52:        if(c == '\n')
+        -:   53:        {
+    #####:   54:            s[i] = c;
+    #####:   55:            ++i;
+        -:   56:        }
+       10:   57:        s[i] = c;
+        -:   58:    }
+        8:   59:    s[i] = '\0';
+        -:   60:
+        8:   61:    return i;
+        -:   62:}
+        -:   63:
+        -:   64:
+        2:   65:void copy(char copied[], char line[])
+        -:   66:{
+        2:   67:    int i = 0;
+        -:   68:
+       12:   69:    while((copied[i] = line[i]) != '\0')
+        -:   70:    {
+       10:   71:        ++i;
+        -:   72:    }
+        2:   73:}
+        -:   74:
+        2:   75:void reverseds(char reversed[], char copied[], int max)
+        -:   76:{
+        2:   77:    int i = 0, lim  = max;
+        -:   78:
+        -:   79:    // for(i = 0; i < max && lim >= 0; ++i, --lim)
+        -:   80:
+       12:   81:    while(i < max && lim >= 0)
+        -:   82:    // ((reversed[i] = line[lim]) != '\0')
+        -:   83:    {
+      10*:   84:        if(copied[lim - 1] != '\n' || copied[lim - 1] != '\0')
+        -:   85:        {
+       10:   86:            reversed[i] = copied[lim - 1];
+        -:   87:        }
+       10:   88:        ++i;
+       10:   89:        --lim;
+        -:   90:    }
+        2:   91:}
