@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.25.1)
+project(CharCount)
+enable_testing()
+SET(CMAKE_CXX_FLAGS "-g -O0 -Wall -fprofile-arcs -ftest-coverage")
+SET(CMAKE_C_FLAGS "-g -O0 -Wall -fprofile-arcs -ftest-coverage")
+SET(CMAKE_EXE_LINKER_FLAGS "-fprofile-arcs -ftest-coverage")
+add_executable(reversed_str reversed.c)
