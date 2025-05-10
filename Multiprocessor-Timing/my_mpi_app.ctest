@@ -1,0 +1,25 @@
+#!/usr/bin/bash
+# This script runs the serial and the parallel apps and produce different output files
+# remember to make this file executable for the user
+
+echo "Running a serial test..."
+./TimeIt.c > run0.out
+
+echo "Running the test in MPI with 1 processor..."
+mpirun -n 2 ./mpi_time_it.c > run1.out
+
+echo "Running the test in MPI with 2 processors..."
+mpirun -n 2 ./mpi_time_it.c
+
+echo "Comparing the otput of the 2 MPI jobs..."
+nddiff --relative-error 1.04e-4 run1.out run2.out
+
+# Get the exit status of executinf this comparison, 0 means successfull, otherwise, fail
+test1=$?
+
+echo "Serial output vs 2 processor run in MPI..."
+ndiff --relative-error 1.0e-4 run0.out run2.out
+test2=$?
+
+# Return the exit status when the script finishes
+exit "$(($test1 + $test2))"
