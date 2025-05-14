@@ -1,0 +1,1 @@
+/usr/bin/cc -g -O0 -Wall -fprofile-arcs -ftest-coverage -fprofile-arcs -ftest-coverage CMakeFiles/MPITimeIt.dir/mpi_time_it.c.o -o MPITimeIt  -Wl,-rpath,/usr/local/lib /usr/local/lib/libmpi.so

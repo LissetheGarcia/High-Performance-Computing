@@ -1,0 +1,6 @@
+/home/lissethe/github/High-Performance-Computing/Multiprocessor-Timing/timerBuild/CMakeFiles/TimeIt.dir
+/home/lissethe/github/High-Performance-Computing/Multiprocessor-Timing/timerBuild/CMakeFiles/MPITimeIt.dir
+/home/lissethe/github/High-Performance-Computing/Multiprocessor-Timing/timerBuild/CMakeFiles/distclean.dir
+/home/lissethe/github/High-Performance-Computing/Multiprocessor-Timing/timerBuild/CMakeFiles/test.dir
+/home/lissethe/github/High-Performance-Computing/Multiprocessor-Timing/timerBuild/CMakeFiles/edit_cache.dir
+/home/lissethe/github/High-Performance-Computing/Multiprocessor-Timing/timerBuild/CMakeFiles/rebuild_cache.dir

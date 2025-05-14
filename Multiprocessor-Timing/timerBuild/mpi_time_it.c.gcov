@@ -1,0 +1,35 @@
+        -:    0:Source:/home/lissethe/github/High-Performance-Computing/Multiprocessor-Timing/mpi_time_it.c
+        -:    1:// Program using a timer to produce small differences in output to compare serial and parallel output
+        -:    2:// using mpi library for C/C++
+        -:    3:
+        -:    4:// Header for access to functions to the POSIX API of the OS, useful for kernel interaction
+        -:    5:#include <unistd.h>
+        -:    6:#include <stdio.h>
+        -:    7:// Header for performing parallel programming in C
+        -:    8:#include <mpi.h>
+        -:    9:
+        1:   10:int main(int argc, char *argv[])
+        -:   11:{
+        -:   12:    int mype;
+        -:   13:
+        -:   14:    // MPI initialization and processor rank spawn
+        -:   15:    // This function initiliazes MPI environment, taking addresses from argc and argv command line args.
+        1:   16:    MPI_Init(&argc, &argv);
+        -:   17:    // Manage communicators for process communicators
+        -:   18:    /* this function returns the process ID of the processor that called the function.
+        -:   19:     * takes the MPI environment and the memory address of an integer value */
+        1:   20:    MPI_Comm_rank(MPI_COMM_WORLD, &mype);
+        -:   21:
+        -:   22:    double t1, t2;
+        -:   23:
+        1:   24:    t1 = MPI_Wtime();
+        1:   25:    sleep(10);
+        1:   26:    t2 = MPI_Wtime();
+        1:   27:    if(mype == 0)
+        -:   28:    {
+        1:   29:        printf("Elapsed time is %f secs\n", t2-t1);
+        -:   30:    }
+        -:   31:
+        -:   32:    // This function cleans up MPI environment & ends MPI communications
+        1:   33:    MPI_Finalize();
+        -:   34:}

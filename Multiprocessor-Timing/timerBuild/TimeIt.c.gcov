@@ -1,0 +1,25 @@
+        -:    0:Source:/home/lissethe/github/High-Performance-Computing/Multiprocessor-Timing/TimeIt.c
+        -:    1:// Program using a timer to produce small differences in output to compare serial and parallel output
+        -:    2:
+        -:    3:#include <unistd.h>
+        -:    4:#include <stdio.h>
+        -:    5:#include <time.h>
+        -:    6:
+        -:    7:
+        1:    8:int main(int argc, char *argv[])
+        -:    9:{
+        -:   10:   struct timespec tstart, tstop, tresult;
+        -:   11:
+        -:   12:   // Start timer, call sleep and stop timer
+        1:   13:   clock_gettime(CLOCK_MONOTONIC, &tstart);
+        1:   14:   sleep(10);
+        1:   15:   clock_gettime(CLOCK_MONOTONIC, &tstop);
+        -:   16:
+        -:   17:   // Timer has two values for resolution and prevent overflows
+        1:   18:   tresult.tv_sec = tstop.tv_sec - tstart.tv_sec;
+        1:   19:   tresult.tv_nsec = tstop.tv_nsec - tstart.tv_nsec;
+        -:   20:
+        -:   21:   // Print calculated time from timers
+        1:   22:   printf("Elapsed time is %f secs\n", (double)tresult.tv_sec +
+        1:   23:      (double)tresult.tv_nsec*1.0e-9);
+        -:   24:}
