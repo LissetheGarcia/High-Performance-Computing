@@ -7,7 +7,7 @@
 // Header for performing parallel programming in C
 #include <mpi.h>
 
-int main(int arc, char *argv[])
+int main(int argc, char *argv[])
 {
     int mype;
 
@@ -26,7 +26,7 @@ int main(int arc, char *argv[])
     t2 = MPI_Wtime();
     if(mype == 0)
     {
-        printf("%s", "Elapsed time is %f secs\n", t2-t1);
+        printf("Elapsed time is %f secs\n", t2-t1);
     }
 
     // This function cleans up MPI environment & ends MPI communications
