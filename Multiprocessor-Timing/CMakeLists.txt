@@ -7,6 +7,10 @@ enable_testing()
 # Built-in routine to find all MPI packages
 find_package(MPI)
 
+SET(CMAKE_CXX_FLAGS "-g -O0 -Wall -fprofile-arcs -ftest-coverage")
+SET(CMAKE_C_FLAGS "-g -O0 -Wall -fprofile-arcs -ftest-coverage")
+SET(CMAKE_EXE_LINKER_FLAGS "-fprofile-arcs -ftest-coverage")
+
 # Add build targets with their source code files
 add_executable(TimeIt TimeIt.c)
 add_executable(MPITimeIt mpi_time_it.c)
